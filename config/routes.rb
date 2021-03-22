@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  devise_for :user,
+  controller: {registrations: 'registrations'}
   root 'pages#home'
+  get '/users/:id', to: 'users#show', as:'user'
+
+
+  get '/posts/new', to: 'posts#new'
+  post '/posts', to: 'posts#create'
+  post '/posts/:post_id/photos', to: 'photos#create',as:'post_photos'
 end
