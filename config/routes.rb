@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
 
-  devise_for :users
   devise_for :users,
   controller: {registrations: 'registrations'}
   root 'pages#home'
   get '/users/:id', to: 'users#show', as:'user'
 
 
-  get '/posts/new', to: 'posts#new'
-  post '/posts', to: 'posts#create'
-  post '/posts/:post_id/photos', to: 'photos#create', as: 'post_photos'
+  resource :posts, only: %i(new create) do
+    resource :photos, only: %i(create)
+  end
 
 end
