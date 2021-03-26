@@ -2,7 +2,7 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_many :photos, dependent: :destoroy
+  has_many :photos, dependent: :destroy
 
-  accept_nested_attributes_for :photos
+  accepts_nested_attributes_for :photos
 end
