@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/users/:id', to: 'users#show', as:'user'
 
 
-  resource :posts, only: %i(new create) do
+  resource :posts, only: %i(new create index) do
     resource :photos, only: %i(create)
   end
 
