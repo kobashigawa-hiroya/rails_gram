@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
 
   def index 
-    @posts = Post.limit(10)include(:photos, :user).order('create_at DESC')
+    @posts = Post.limit(10).includes(:photos, :user).order('created_at DESC')
   end
 
   private 
